@@ -6,14 +6,15 @@
 1. **Data Manager Agent:**<br>
 Name: dataManager. This agent listens for the Provider (VenueAgent) to provide the upcoming concert details (location, ticketPrice, and genre).
 
-2. **VenueAgent:**  
+2. **VenueAgent:** <br>
 - Name: Any name is acceptable, for example, Provider1.
 - This agent should receive three arguments in the following format: location, ticketPrice, genre (e.g., Downtown, 50, Classic).
 - The dataManager receives these arguments and updates the concerts table accordingly.
 
-4. The admin agent:
-   - is responsible for registering new users in the users table, and handling the errors in the data fields if provided, and verifying if the registered user is a new user or already existing user.
-   - 
+3. **The admin agent:**<br>
+   - Registering new users in the users table, and handling the errors in the data fields if provided. <br>
+   - verifying if the any user, who is interacting with the MCRS, is a new user or already existing user.
+     
 6. Having a concert seeker agent (a representation for the user GUI).This agent will send to the recommender a concert seeking request by providing the following arguments: email, location preferences, Ticket price, and genre.
 
 7. The Recommender agent receives a message with the user's email, location preference, ticket price, and genre, from the concert seeker agent. Then, send a message to the AdminAgent to check if the email exists.
