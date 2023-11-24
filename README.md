@@ -1,5 +1,6 @@
 # SENG969-Project-Team1
-// This repository contains the source code for Assignment 3 in the SENG696 course.
+// This repository contains the source code for Assignment 3 in the SENG696 course.  
+
 // In this document, we provide a detailed description of our implementation for the Multi Agent MCRS, including the sequence for starting the agents:
 
 1. Data Manager Agent:
