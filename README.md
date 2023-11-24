@@ -3,7 +3,7 @@
 
 // In this document, we provide a detailed description of our implementation for the Multi Agent MCRS, including the sequence for starting the agents:
 
-1. Data Manager Agent:
+1. **Data Manager Agent**:  
 Name: dataManager. This agent listens for the Provider (VenueAgent) to provide the upcoming concert details (location, ticketPrice, and genre).
 
 2. VenueAgent:
