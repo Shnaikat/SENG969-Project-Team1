@@ -17,7 +17,7 @@ Name: dataManager. This agent listens for the Provider (VenueAgent) to provide t
      
 6. **ConcertSeeker Agent:** <br>
    - Seek concert:send to the recommender a concert seeking request by providing the following arguments: email, location preferences, Ticket price, and genre.<br>
-   - Find friends:  <br>
+   - Find friends: If the concert seeker is eligible for seeking concert service (this happened if he is a registered user), and he provided a concert preferences that are matched with an upcoming concert, Find friends service will be enabled for the seeker. <br>
    
 7. **Recommender Agent:**<br>
     receives a message with the user's email, location preference, ticket price, and genre, from the concert seeker agent. Then, send a message to the AdminAgent to check if the email exists.
