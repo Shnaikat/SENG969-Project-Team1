@@ -1,3 +1,4 @@
+//Admin GUI to let the user insert personal info to create profile
 package agents;
 
 import javax.swing.*;
