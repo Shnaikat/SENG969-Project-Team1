@@ -36,11 +36,11 @@ TODO: Add cloning and compilation instructions here
 For a simple walkthrough of the project functionality, run the agents in the following order: 
 
 1. Run the Admin agent. Note that this agent must be kept open during operation.
-2. Add the venues by passing arguments to the Venue agent. You need to use the following arguments:
+2. Run the DataManager agent with the name "dataManager" (mandatory). 
+3. Add the venues by passing arguments to the Venue agent. You need to use the following arguments:
       - Concert location (String)
       - Ticket price (Integer)
       - Genre (String)
-3. Run the DataManager agent. 
 4. Run the Concert seeker agent. 
 5. Run the Recommender agent.
 6. Run the Invitation agent. 
