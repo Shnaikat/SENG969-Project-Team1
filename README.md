@@ -41,6 +41,7 @@ For a simple walkthrough of the whole project functionality, run the agents in t
    - Concert location (String)
    - Ticket price (Integer)
    - Genre (String)
+   
    Using JADE GUI, you can simply pass comma-separated arguments. However, make sure you use the mentioned order. You should see a confirmation message in the console.
 4. Run the Recommender agent with the name "Recommender" (mandatory).
 5. Run the Invitation agent with the name "InvitationAgent" (mandatory). 
