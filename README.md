@@ -33,14 +33,15 @@ If the email does not exist, it will prompt the user to register.
 
 TODO: Add cloning and compilation instructions here
 
-For a simple walkthrough of the project functionality, run the agents in the following order: 
+For a simple walkthrough of the whole project functionality, run the agents in the following order: 
 
-1. Run the Admin agent. Note that this agent must be kept open during operation.
-2. Run the DataManager agent with the name "dataManager" (mandatory). 
+1. Run the Admin agent. Note that this agent must be kept open as long as the application is running. You can now register a new user (not required if you have created a user before). 
+2. Run the DataManager agent with the name "dataManager" (mandatory, unless you don't want to use the Venue agent next). If things go right, at this stage the message "Database connected successfully" is shown at the Eclipse console. 
 3. Add the venues by passing arguments to the Venue agent. You need to use the following arguments:
-      - Concert location (String)
-      - Ticket price (Integer)
-      - Genre (String)
-4. Run the Concert seeker agent. 
-5. Run the Recommender agent.
-6. Run the Invitation agent. 
+   - Concert location (String)
+   - Ticket price (Integer)
+   - Genre (String)
+   Using JADE GUI, you can simply pass comma-separated arguments. However, make sure you use the mentioned order. You should see a confirmation message in the console.
+4. Run the Recommender agent with the name "Recommender" (mandatory).
+5. Run the Invitation agent with the name "InvitationAgent" (mandatory). 
+6. Run the Concert seeker agent and search for concerts and friends. 
