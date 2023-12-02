@@ -1,11 +1,13 @@
-//ConcertSeeker Agent code:
-//Through a GUI, concert seeker inserts these arguments: 
-//(1)Email, 
-//(2)Location 
-//(3)Ticket price
-//(4)Genre
-//Moreover, a "Seek Concert" button is defined. By clicking on this button, the ConcertSeeker Agent sends the request to the recommender agent.
+ConcertSeeker Agent code:
 
+/*
+Through a GUI, concert seeker inserts these arguments: 
+(1)Email, 
+(2)Location 
+(3)Ticket price
+(4)Genre
+Moreover, a "Seek Concert" button is defined. By clicking on this button, the ConcertSeeker Agent sends the request to the recommender agent.
+*/
 package agents;
 
 import jade.core.Agent;
