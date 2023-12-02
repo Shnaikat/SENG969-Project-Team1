@@ -1,3 +1,12 @@
+//DataManager Agent Code.
+
+/*DataManager Agent can listen to the Venue Agent. Venue Agent 
+provides the new concert information, including location, ticket Price, and genre. After receiving this information from the Venue (provider), 
+the DataManager Agent inserts them in the Concert tables.
+Two messages might be shown in this process:
+1) Concert details were inserted into the database successfully.
+2) Error inserting concert details into the database.*/
+    
 package agents;
 
 import jade.core.Agent;
