@@ -1,4 +1,6 @@
 //Admin GUI to let the user insert personal info to create profile
+//In other words, to make a profile, a new user needs to fill out the form that includes three fields: (1)Name, (2)Password, (3)Email.
+//Then the registration will be done through the Admin GUI.
 package agents;
 
 import javax.swing.*;
