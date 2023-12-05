@@ -1,3 +1,6 @@
+/*
+ * The Recommender agent is responsible for
+ */
 package agents;
 
 import jade.core.Agent;
@@ -59,7 +62,7 @@ public class RecommenderAgent extends Agent {
                 int seekerTicket = Integer.parseInt(details[2]);
                 String seekerGenre = details[3];
 
-                // Correctly set the conversation ID for the request
+                // set the conversation ID for the request to distinguish between them
                 String conversationId = "check-user-" + System.currentTimeMillis();
 
                 ACLMessage userCheckRequest = new ACLMessage(ACLMessage.REQUEST);
@@ -78,9 +81,9 @@ public class RecommenderAgent extends Agent {
                         int userID = Integer.parseInt(responseParts[1]);
                         updateUserPreferences(seekerLocation, seekerTicket, seekerGenre, userID);
                         // Call proposeConcert here
-                        proposeConcert(seekerLocation, seekerTicket, seekerGenre, msg);
+                        recommendConcert(seekerLocation, seekerTicket, seekerGenre, msg);
                     } else {
-                        // User not found, send a refusal message
+                        // User not registered -> send a refusal message
                         ACLMessage reply = msg.createReply();
                         reply.setPerformative(ACLMessage.REFUSE);
                         reply.setContent("User not found. Please register.");
@@ -99,7 +102,7 @@ public class RecommenderAgent extends Agent {
     }
 
     private void updateUserPreferences(String location, int ticketPrice, String genre, int userID) {
-        // Update the user's preferences in the database
+        // insert the user's preferences to DB
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS)) {
             String sql = "INSERT INTO preferences (location, Ticket, genre, userID) VALUES (?, ?, ?, ?)";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -108,15 +111,15 @@ public class RecommenderAgent extends Agent {
                 stmt.setString(3, genre);
                 stmt.setInt(4, userID);
                 int rowsAffected = stmt.executeUpdate();
-                System.out.println("Preferences updated. Rows affected: " + rowsAffected);
+                System.out.println("Preferences updated .. the affected rows: " + rowsAffected);
             }
         } catch (Exception e) {
-            System.out.println("Error updating user preferences: " + e.getMessage());
+            System.out.println("could not update user preferences: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private void proposeConcert(String location, int ticketPrice, String genre, ACLMessage seekerMsg) {
+    private void recommendConcert(String location, int ticketPrice, String genre, ACLMessage seekerMsg) {
         ACLMessage proposal = seekerMsg.createReply();
         boolean concertFound = false;
         for (Concert concert : concertCatalog) {
