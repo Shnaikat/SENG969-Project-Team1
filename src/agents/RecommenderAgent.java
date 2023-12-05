@@ -31,7 +31,7 @@ public class RecommenderAgent extends Agent {
     }
 
     private void loadConcertsFromDB() {
-        // The connection, statement, and result set should be closed properly
+      
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM concerts")) {
