@@ -3,7 +3,7 @@
  This agent is the one that doing the "find friends" task.
  After receiving the seekers preferences, this agent will search the preferences table to find all the users' IDs
  who have same preferences (potential friends).
- Then this agent will retrieve the emails for those users, and inform the concert seeker.
+ Then this agent will retrieve the emails for those users, and inform the concert seeker to display them in its GUI.
  */
 
 package agents;
