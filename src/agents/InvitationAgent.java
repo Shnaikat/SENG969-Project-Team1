@@ -1,5 +1,5 @@
 /*
- This agent will be working if and only if the concert seeker received a recommendation for an upcoming concert.
+ The InvitationAgent agent will be working if and only if the concert seeker received a recommendation for an upcoming concert.
  This agent is the one that doing the "find friends" task.
  After receiving the seekers preferences, this agent will search the preferences table to find all the users' IDs
  who have same preferences (potential friends).
