@@ -7,6 +7,12 @@ Two messages might be shown in this process:
 1) Concert details were inserted into the database successfully.
 2) Error inserting concert details into the database.*/
     
+/*
+ * The data manger will be responsible for acquiring the upcoming concerts information. 
+ * This agent acts as out gateway, as he will receive these information from the Venue agent, 
+ * then update the concerts table, so when the recommender agent search for matching concert, 
+ * he will find the up-to-date concerts information in the concert table 
+ */
 package agents;
 
 import jade.core.Agent;
@@ -23,15 +29,15 @@ public class DataManagerAgent extends Agent {
     protected void setup() {
         System.out.println(getLocalName() + ": DataManagerAgent is ready.");
 
-        // Establish a connection to the database
+        // Establish a connection to the DB
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mcrs-db", "root", "kk");
-            System.out.println("Database connected successfully."); // Check connection
-            conn.setAutoCommit(true); // Ensure auto-commit is enabled 
+            System.out.println("Database connected successfully."); // check if Db connectected successfully
+            conn.setAutoCommit(true); // enable auto-commit to be sure that the transaction reflected on the DB
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Connection error: " + e.getMessage());
+            System.out.println("I can't connect to DB " + e.getMessage());
             doDelete();
         }
 
@@ -51,15 +57,15 @@ public class DataManagerAgent extends Agent {
                     int price = Integer.parseInt(details[1]);
                     String genre = details[2];
                  // Print incoming arguments (concert details)
-                    System.out.println("Received data: Location - " + location + ", Price - " + price + ", Genre - " + genre); 
-                    insertConcertDetails(location, price, genre);
+                    System.out.println("I am the data manager and I received the following concert details: Location -> " + location + ", Price -> " + price + ", Genre -> " + genre); 
+                    updateConcertDetails(location, price, genre);//Sending those info to be inserted in concerts table
                 }
             } else {
                 block();
             }
         }
 
-        private void insertConcertDetails(String location, int price, String genre) {
+        private void updateConcertDetails(String location, int price, String genre) {
             String query = "INSERT INTO concerts(location, Ticket, genre) VALUES(?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 pstmt.setString(1, location);
@@ -67,16 +73,16 @@ public class DataManagerAgent extends Agent {
                 pstmt.setString(3, genre);
                 
                 int rows = pstmt.executeUpdate();
-                System.out.println(rows + " row(s) inserted."); // Check query execution
+                System.out.println(rows + " row(s) inserted."); // Be sure the entered args were inserted correctly to concerts table
                 
-                if (conn.getWarnings() != null) { // Check for SQL Warnings
+                if (conn.getWarnings() != null) { // check for unexpected errors from DB
                     System.out.println("SQL Warning: " + conn.getWarnings());
                 }
                 
-                System.out.println(getLocalName() + ": Concert details inserted into the database successfully.");
+                System.out.println(getLocalName() + ": Concert details inserted into the concerts table successfully by the data manager agent.");
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Error inserting concert details into the database: " + e.getMessage());
+                System.out.println("Data manager could not inserted the concert details into the DB " + e.getMessage());
             }
         }
     }
