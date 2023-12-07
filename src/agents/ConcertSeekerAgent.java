@@ -1,3 +1,21 @@
+
+
+/* ConcertSeeker Agent code:
+Through a GUI, concert seeker inserts these arguments: 
+(1)Email, 
+(2)Location 
+(3)Ticket price
+(4)Genre
+Moreover, a "Seek Concert" button is defined. By clicking on this button, the ConcertSeeker Agent sends the request to the recommender agent.
+*/
+
+   /* According to our assumption, the concert seeker is a registered user, so we implemented the following:
+ * 1. When the seeker clicks seek concert and his email is not in the users table, the Admin agent will verify that, 
+ * and respond to the seeker to go and register (The seek concert is not allowed).
+ * 2. If his/her email is within the users table, this means the seeker is a registered user, and the seek concert service is allowed for him.
+ * 3. If the Recommender replied positively to this seeker, meaning there is an upcoming concert that matched the seeker's preferences
+ * The seeker will be able to use Find friends service (the button will be enabled).
+ * */
 package agents;
 
 import jade.core.Agent;
@@ -103,8 +121,8 @@ public class ConcertSeekerAgent extends Agent {
                     gui.showFriendsList(friendsList);
                     System.out.println("Received friends list from InvitationAgent.");//print thru the console for debugging
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
-                    gui.showFriendsList("No friends found.");
-                   System.out.println("InvitationAgent could not find matching friends.");
+                   // gui.showFriendsList("No friends found.");
+                   //System.out.println("InvitationAgent could not find matching friends.");
                 }
             } else {
                 block();
@@ -169,7 +187,7 @@ public class ConcertSeekerAgent extends Agent {
             findFriendsButton.addActionListener(e -> {
                 // Get the seeker's email from the emailField text field
                 String email = emailField.getText().trim();
-                // Get the other preferences from their respective text fields
+                // Get the other preferences from their corresponding text fields
                 String genre = genreField.getText().trim();
                 String location = locationField.getText().trim();
                 String price = priceField.getText().trim();
@@ -185,7 +203,7 @@ public class ConcertSeekerAgent extends Agent {
             friendsListArea = new JTextArea(5, 15);
             friendsListArea.setEditable(false);
             JScrollPane scrollPane = new JScrollPane(friendsListArea);
-            panel.add(new JLabel("Friends with similar preferences:"));
+            panel.add(new JLabel("Potential friends, you can copy their emails and share with them the upcoming concert"));
             panel.add(scrollPane);
 
             add(panel, BorderLayout.CENTER);
