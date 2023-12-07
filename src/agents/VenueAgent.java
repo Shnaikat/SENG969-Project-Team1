@@ -48,7 +48,7 @@ public class VenueAgent extends Agent {
             msg.setContent(concertLocation + "#" + ticketPrice + "#" + genre);//splitting the data using #
             send(msg);
         } else {
-            System.out.println(getLocalName() + ": The provided No. of arguments is incorrect or Wrong separator used (Please use comma!)");
+            System.out.println(getLocalName() + ": The provided No. of arguments is incorrect or Wrong separator used (Please use comma (',') as the separator)");
             doDelete();
         }
     }
