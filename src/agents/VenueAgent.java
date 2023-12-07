@@ -1,7 +1,10 @@
 /*
  * This agent is acting like the service provider. 
- * If there is an upcoming concert he will notify/send the information of this concert to our data manager agent, so we can have this concerts information.
- * We provide the concert information thru arguments when starting this agent, so we are having different ways (variation) in our implementation.
+ * If there is an upcoming concert, the Venue Agent will notify/send the information about this concert to the data manager agent. 
+ * This information includes Concert Location, Ticket Price, and Genre.
+ * Therefore, we can have this concert information.
+ * We provide the concert information through arguments when starting this agent, so we are having different ways (variations) in our implementation.
+ * For providing the arguments, we need to consider the order of the data. 
  */
 package agents;
 
