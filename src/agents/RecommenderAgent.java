@@ -126,10 +126,10 @@ public class RecommenderAgent extends Agent {
             if (concert.location.equalsIgnoreCase(location) && 
                 concert.ticketPrice <= ticketPrice && 
                 concert.genre.equalsIgnoreCase(genre)) {
-                proposal.setContent("ConcertID: " + concert.concertID + 
+                proposal.setContent(" matches your preferences exactly, It has the ID" + concert.concertID + 
                         ", Location: " + concert.location +
                         ", Ticket Price: " + concert.ticketPrice + 
-                        ", Genre: " + concert.genre);
+                        ", and it is of " + concert.genre + " genre: ");
                 proposal.setPerformative(ACLMessage.PROPOSE);
                 concertFound = true;
                 break;
