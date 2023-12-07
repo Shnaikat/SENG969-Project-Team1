@@ -45,7 +45,7 @@ public class VenueAgent extends Agent {
             msg.setContent(concertLocation + "#" + ticketPrice + "#" + genre);//splitting the data using #
             send(msg);
         } else {
-            System.out.println(getLocalName() + ": The provided No. arguments is incorrect ");
+            System.out.println(getLocalName() + ": The provided No. of arguments is incorrect ");
             doDelete();
         }
     }
