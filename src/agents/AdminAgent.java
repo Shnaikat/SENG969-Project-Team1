@@ -1,8 +1,10 @@
 /*Admin Agent code:
-Admin Agent can make a profile for the new user.
-Admin Agent can add the user information to the users table
-If an error occurs during the profile creation process, the Admin agent can handle that error and provide the proper message.
-Admin Agent can authenticate (verify) a registered user. */
+* Admin Agent can make a profile for the new user.
+* Admin Agent can add the user information to the users table
+* If an error occurs during the profile creation process, the Admin agent can handle that error and provide the proper message.
+* Admin Agent can authenticate (verify) a registered user. 
+* A registered User has access to the seeking concert and finding friends seeking concert services based on their preferences. 
+*/
 
  package agents;
 
