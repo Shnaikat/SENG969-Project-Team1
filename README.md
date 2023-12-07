@@ -24,7 +24,7 @@
    - **Role:** Creates user profiles and verifies user information.
    - **Expected Arguments:** None
    - **Screenshot of the Admin GUI:**
-     ![Admin GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/AdminGUI.png?token=GHSAT0AAAAAACKLAKD6JXJSY5ILRGABDGQMZLSDGLA)
+     ![Admin GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/AdminGUI.png)
 
 4. **ConcertSeeker Agent:**
    - **Agent Names:** Any name is acceptable.
