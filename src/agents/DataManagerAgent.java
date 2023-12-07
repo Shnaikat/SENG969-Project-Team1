@@ -82,7 +82,7 @@ public class DataManagerAgent extends Agent {
                 System.out.println(getLocalName() + ": Concert details inserted into the concerts table successfully by the data manager agent.");
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Data manager could not inserted the concert details into the DB " + e.getMessage());
+                System.out.println("Data manager could not insert the concert details into the DB " + e.getMessage());
             }
         }
     }
