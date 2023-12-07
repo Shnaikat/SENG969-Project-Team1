@@ -15,7 +15,7 @@ public class VenueAgent extends Agent {
     private String genre;
 
     protected void setup() {
-        System.out.println(getLocalName() + ": ready .. this is instance of Venue agnet");
+        System.out.println(getLocalName() + ": ready .. this is instance of Venue agent");
 
        /* Object[] args = getArguments();
         if (args != null && args.length == 3) {
