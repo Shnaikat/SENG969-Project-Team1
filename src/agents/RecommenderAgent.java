@@ -142,7 +142,7 @@ public class RecommenderAgent extends Agent {
         send(proposal);
     }
 
-
+//The Concert inner class is found to have a concert object that holds the concert attributes (ID, location, ticketProice, and genre
     public static class Concert {
         int concertID;
         String location;
