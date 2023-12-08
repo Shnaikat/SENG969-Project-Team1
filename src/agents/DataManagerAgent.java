@@ -29,7 +29,7 @@ public class DataManagerAgent extends Agent {
     protected void setup() {
         System.out.println(getLocalName() + ": DataManagerAgent is ready.");
 
-        // Establish a connection to the DB
+        // Establish a connection to the DB and handling error if can't connect to the DataBase
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mcrs-db", "root", "kk");
