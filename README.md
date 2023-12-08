@@ -29,7 +29,7 @@
      ![VenueAgent GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/VenueAgent.png?token=GHSAT0AAAAAACKLAKD6T5OYDAVHTZN4FLWMZLSDNDQ)
 
 3. **Admin Agent:**
-   - **Agent Name:** `AdminAgent`
+   - **Agent Name:** `Admin`
    - **Role:** Creates user profiles and verifies user information.
    - **Expected Arguments:** None
    - **Screenshot of the Admin GUI:**
@@ -37,14 +37,14 @@
      ![Admin GUI](./screenShots/AdminGUI.png)
      
 4. **Recommender Agent:**
-   - **Agent Name:** `RecommenderAgent`
+   - **Agent Name:** `Recommender`
    - **Role:** Processes user preferences and finds matching concerts.
    - **Expected Arguments:** None
    - **Screenshot Placeholder:**
    - ![Recommender GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/RecommenderLog.jpg?token=GHSAT0AAAAAACKLAKD6B4ROQ6KGU5VWED2MZLSDL6A)
 
 5. **ConcertSeeker Agent:**
-   - **Agent Names:** Any name is acceptable.
+   - **Agent Names:** Any name is acceptable, e.g., `Seeker1`
    - **Role:** Sends concert seeking requests and enables the 'Find friends' service.
    - **Expected Arguments:** email, location preferences, ticketPrice, genre
    - **Screenshot Placeholder:**
