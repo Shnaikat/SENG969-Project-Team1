@@ -26,7 +26,7 @@ public class VenueAgent extends Agent {
             ticketPrice = Integer.parseInt((String) args[1]);
             genre =args[2];*/
 
-        
+// when "start new agent" (Venue Agent), we fill out the Argument box to enter the concert infor providing by that specific Venue (for example provider 1)        
         Object[] args = getArguments();
         if (args != null && args.length == 3) {
             concertLocation = (String) args[0];
