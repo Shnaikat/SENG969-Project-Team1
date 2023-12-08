@@ -35,21 +35,22 @@
    - **Screenshot of the Admin GUI:**
     
      ![Admin GUI](./screenShots/AdminGUI.png)
+     
+4. **Recommender Agent:**
+   - **Agent Name:** `RecommenderAgent`
+   - **Role:** Processes user preferences and finds matching concerts.
+   - **Expected Arguments:** None
+   - **Screenshot Placeholder:**
+   - ![Recommender GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/RecommenderLog.jpg?token=GHSAT0AAAAAACKLAKD6B4ROQ6KGU5VWED2MZLSDL6A)
 
-
-4. **ConcertSeeker Agent:**
+5. **ConcertSeeker Agent:**
    - **Agent Names:** Any name is acceptable.
    - **Role:** Sends concert seeking requests and enables the 'Find friends' service.
    - **Expected Arguments:** email, location preferences, ticketPrice, genre
    - **Screenshot Placeholder:**
    - ![ConcertSeeker GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/Seeker-positiveResponse.png?token=GHSAT0AAAAAACKLAKD7QYUSWX7VBF3TR4JKZLSDMVQ)
 
-5. **Recommender Agent:**
-   - **Agent Name:** `RecommenderAgent`
-   - **Role:** Processes user preferences and finds matching concerts.
-   - **Expected Arguments:** None
-   - **Screenshot Placeholder:**
-   - ![Recommender GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/RecommenderLog.jpg?token=GHSAT0AAAAAACKLAKD6B4ROQ6KGU5VWED2MZLSDL6A)
+
 
 6. **InvitationAgent:**
    - **Agent Name:** `InvitationAgent`
