@@ -38,16 +38,21 @@ public class ConcertSeekerAgent extends Agent {
     private ConcertSeekerGui gui;
 
     protected void setup() {
+        // For the sake of debugging aid
         System.out.println("ConcertSeekerAgent " + getAID().getName() + " is ready.");
+        // Trigger the GUI
         gui = new ConcertSeekerGui(this);
         SwingUtilities.invokeLater(gui::showGui);
+        // Add the behaviour to invoke proper inter-agent messages
         addBehaviour(new HandleRecommenderResponseBehaviour());
         addBehaviour(new HandleInvitationsResponseBehaviour());
         
     }
 
     public void seekConcert(String email, String location, int price, String genre) {
+        // Debugging aid
         System.out.println("Seeking concert with preferences: Email: " + email + ", Location: " + location + ", Price: " + price + ", Genre: " + genre);
+        // Invoke the function to send the actual message
         addBehaviour(new ConcertSeekingBehaviour(email, location, price, genre));
     }
 
@@ -58,6 +63,7 @@ public class ConcertSeekerAgent extends Agent {
         private final String genre;
 
         ConcertSeekingBehaviour(String email, String location, int price, String genre) {
+            // Set the parameters in the constructor
             this.email = email;
             this.location = location;
             this.price = price;
@@ -65,11 +71,14 @@ public class ConcertSeekerAgent extends Agent {
         }
 
         public void action() {
+            // Create the message
             ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
+            // Find the target agent by name
             cfp.addReceiver(new AID("Recommender", AID.ISLOCALNAME));
+            // #-separated parameters
             cfp.setContent(email + "#" + location + "#" + price + "#" + genre);
-            myAgent.send(cfp);
-            System.out.println("CFP message sent to RecommenderAgent.");
+            myAgent.send(cfp);    // Send the message
+            System.out.println("CFP message sent to RecommenderAgent."); // Debug aid
         }
     }
     private class HandleRecommenderResponseBehaviour extends CyclicBehaviour {
