@@ -43,7 +43,8 @@ public class DataManagerAgent extends Agent {
 
         addBehaviour(new InsertConcertDetailsBehaviour());
     }
-
+//dataManager listen to Venue (Provider) and receive a message. This message is the concert info.
+// Then split the message into three parts.   
     private class InsertConcertDetailsBehaviour extends CyclicBehaviour {
         public void action() {
             MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
