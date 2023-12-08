@@ -94,41 +94,51 @@ public class ConcertSeekerAgent extends Agent {
     }
 
     public void sendInvitationAgentRequest(String preferences) {
+        // Send the agent request (triggered when the "Find Friends" button is pressed)
         addBehaviour(new OneShotBehaviour() {
             public void action() {
                 ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+                // Find the message target by name
                 msg.addReceiver(new AID("InvitationAgent", AID.ISLOCALNAME));
+                // Send the query as an inter-agent message
                 msg.setContent(preferences);
                 send(msg);
+                // Print to the console for debugging purposes
                 System.out.println(getLocalName() + ": InvitationAgent request sent with preferences: " + preferences);
             }
         });
     }
-    /*HandleInvitations:sets up message templates to listen for two types of ACL:Inform &Failure
+    /* HandleInvitations:sets up message templates to listen for two types of ACL: Inform & Failure
      * If a message is received:
- *    a. INFORM case: The content is the friend/s list, it will be displayed on the GUI.
+ *    a. INFORM case: The content is the friends list, it will be displayed on the GUI.
  * 
  *    b. FAILURE case: notifies the GUI that no friends were 
  *       found and prints a corresponding log to the console.
  * 
- *   *If no message is received, the behavior will wait until a new message arrives before executing again.
+ *   * If no message is received, the behavior will wait until a new message arrives before executing again.
     */
+    // We expect these messages to be received from the invitation agents, in reply to the friend search requests
     private class HandleInvitationsResponseBehaviour extends CyclicBehaviour {
         public void action() {
             MessageTemplate mtInform = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
             MessageTemplate mtFailure = MessageTemplate.MatchPerformative(ACLMessage.FAILURE);
+            // We want to accept either type of message
             MessageTemplate mtCombined = MessageTemplate.or(mtInform, mtFailure);
             ACLMessage msg = myAgent.receive(mtCombined);
             if (msg != null) {
+                // If there's a message for processing, react based on its type
                 if (msg.getPerformative() == ACLMessage.INFORM) {
+                    // An INFORM message indicates success and a list of friends returned
                     String friendsList = msg.getContent();
                     gui.showFriendsList(friendsList);
-                    System.out.println("Received friends list from InvitationAgent.");//print thru the console for debugging
+                    System.out.println("Received friends list from InvitationAgent."); // print thru the console for debugging
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
+                   // A FAILURE message indicates that there is no friend suggestion. 
                    // gui.showFriendsList("No friends found.");
                    //System.out.println("InvitationAgent could not find matching friends.");
                 }
             } else {
+                // If there's no message to process, wait for the next event
                 block();
             }
         }
