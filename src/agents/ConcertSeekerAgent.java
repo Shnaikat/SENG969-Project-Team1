@@ -85,10 +85,12 @@ public class ConcertSeekerAgent extends Agent {
         public void action() {
             MessageTemplate mtProposal = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);
             MessageTemplate mtRefuse = MessageTemplate.MatchPerformative(ACLMessage.REFUSE);
+            // We want to process either type of responses, PROPOSE for indicating successful search and REFUSE for indicating failure
             ACLMessage msg = myAgent.receive(MessageTemplate.or(mtProposal, mtRefuse));
             if (msg != null) {
+                // If there has been a response: 
                 if (msg.getPerformative() == ACLMessage.PROPOSE) {
-                    // Process the concert proposal
+                    // Process and display the concert proposal
                     String concertDetails = msg.getContent();
                     gui.showResponse("Concert Found: " + concertDetails);
                 } else if (msg.getPerformative() == ACLMessage.REFUSE) {
@@ -97,6 +99,7 @@ public class ConcertSeekerAgent extends Agent {
                     gui.showResponse(content);
                 }
             } else {
+                // Wait for an event before checking for the next message
                 block();
             }
         }
