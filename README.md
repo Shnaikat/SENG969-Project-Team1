@@ -6,7 +6,11 @@
 - Create a new Java project.
 - Add the jar files as external libraries. (Jade and mysql-connector-j-8.0.31.jar).
 - Import the src/agents.
-- Run configuration: 
+- Run configurations: - Create new Java App and give it a name.
+                      - In the Main tab the project should be the same project you have created and the class should be jade.Boot.
+                      - In the Arguments tab, insert -gui.
+                      - Apply and Run.
+                      - Each time you want to re-run, just choose the Java App you have created. <br>
 ## Agent Initialization Sequence
 1. **Data Manager Agent:**
    - **Agent Name:** `dataManager`
