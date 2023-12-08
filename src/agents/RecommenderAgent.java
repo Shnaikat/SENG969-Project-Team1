@@ -1,6 +1,9 @@
 /*
- * The Recommender agent is responsible for: sending a user verification request to the Admin agent. According to the Admin response, the recommender will provide the seeker with a concert recommendation
- If there is any, or tell the seeker that no concerts found. If the seeker is not registered the Recommender will direct him to create profile before trying to use the seek concert service.
+ * The Recommender agent is responsible for: 
+ Getting the up to date concert information. 
+ Sending a user verification request to the Admin agent. According to the Admin response, the recommender will provide the seeker with a concert recommendation
+ If there is any, or tell the seeker that no concerts found. 
+ If the seeker is not registered the Recommender will direct him to create profile before trying to use the seek concert service.
  */
 package agents;
 
