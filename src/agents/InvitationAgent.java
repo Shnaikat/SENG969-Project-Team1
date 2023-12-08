@@ -25,10 +25,13 @@ public class InvitationAgent extends Agent {
     private Connection connection;
 
     protected void setup() {
+        // Agent initialization behaviour
+        // Create DB connection
         try {
             // JDBC driver loading
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Set up DB connection
+            // Note that the username and password must match the DB server configuration. Default is user = root, pass = kk
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mcrs-db", "root", "kk");
             System.out.println(getLocalName() + ": Connected to DB successfully.");
         } catch (Exception e) {
@@ -36,18 +39,24 @@ public class InvitationAgent extends Agent {
             e.printStackTrace();
             doDelete();
         }
-
+        // When the connection is ready, add the agent behaviour
         addBehaviour(new InvitationBehaviour());
     }
 
     private class InvitationBehaviour extends CyclicBehaviour {
+        // Receive and process inbound messages
         public void action() {
+            // Create the expected message template
             MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
+            // Try to receive the message
             ACLMessage msg = myAgent.receive(mt);
             if (msg != null) {
+                // If the message has been received, proceed to process it
                 String content = msg.getContent();
+                // We pass parameters between agents using #-separated strings, so split
                 String[] preferences = content.split("#");
                 if (preferences.length == 4) {
+                    // If the number of parameters is correct, proceed
                     String genre = preferences[0];
                     String location = preferences[1];
                     try {
@@ -72,9 +81,11 @@ public class InvitationAgent extends Agent {
                         }
                         send(reply);
                     } catch (NumberFormatException e) {
+                        // Generate an error message if the price is not a number
                         System.err.println(getLocalName() + ": Incorrect parsing ticket price: " + e.getMessage());
                     }
                 } else {
+                    // The number of parameters is not as expected (4)
                     System.err.println(getLocalName() + ": number of preferences received is in corrected. supposed to have 4, got " + preferences.length);
                 }
             } else {
