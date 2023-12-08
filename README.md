@@ -11,7 +11,7 @@
   - In the Main tab, ensure that the project selected is the one you have just created. The main class should be set to 'jade.Boot'<br>
   - In the Arguments tab, insert -gui.<br>
   - Apply and Run.<br>
-  - Each time you want to re-run, just choose the Java App you have created. <br>
+  - Each time you want to re-run, just choose the Java App you have created with the specified settings. <br>
 ## Agent Initialization Sequence
 1. **Data Manager Agent:**
    - **Agent Name:** `dataManager`
