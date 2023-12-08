@@ -9,7 +9,7 @@ Two messages might be shown in this process:
     
 /*
  * The data manger will be responsible for acquiring the upcoming concerts information. 
- * This agent acts as out gateway, as he will receive these information from the Venue agent, 
+ * This agent acts as out gateway agent, as he will receive these information from the Venue agent, 
  * then update the concerts table, so when the recommender agent search for matching concert, 
  * he will find the up-to-date concerts information in the concert table 
  */
