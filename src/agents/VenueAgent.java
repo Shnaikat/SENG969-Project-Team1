@@ -4,7 +4,7 @@
  * This information includes Concert Location, Ticket Price, and Genre.
  * Therefore, we can have this concert information.
  * We provide the concert information through arguments when starting this agent, so we are having different ways (variations) in our implementation.
- * For providing the arguments, we need to consider the order of the data. 
+ * For providing the arguments, we need to consider the order of the data and the number of the provided arguments. 
  */
 package agents;
 
