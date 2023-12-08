@@ -1,7 +1,7 @@
 # SENG969-Project-Team1
 
-**This repository contains the source code for Assignment 3 in the SENG696 course. It includes SQL files for the database tables and an updated version of assignment 2 with inter-agent messages in XML.** <br> 
-**This document provides a detailed steps on how to run our code along with the sequence for starting the agents. Also, a description of our implementation for the Multi-Agent MCRS, .**
+**This repository contains the source code for Assignment 3 of the SENG696 course. It includes SQL files for setting up database tables, the necessary jar files, and an updated version of Assignment 2, which now features inter-agent messaging in XML format.** <br> 
+**This document offers detailed steps on how to run our code, along with the sequence for initializing the agents. Additionally, it provides a description of our implementation for the Multi-Agent Music Concert Recommender System (MCRS).**
 ## How to run our code: <br>
 - Create a new Java project.
 - Add the jar files as external libraries. (Jade and mysql-connector-j-8.0.31.jar).
@@ -12,7 +12,8 @@
   - In the Arguments tab, insert -gui.<br>
   - Apply and Run.<br>
   - Each time you want to re-run, just choose the Java App you have created with the specified settings. <br>
-## Agent Initialization Sequence
+
+## Once you are able to see the Jade GUI, you can start the MCRS agents with respect to the following sequence and specifications:
 1. **Data Manager Agent:**
    - **Agent Name:** `dataManager`
    - **Role:** Listens for the VenueAgent to provide upcoming concert details such as location, ticketPrice, and genre.
