@@ -2,10 +2,10 @@
 
 /* ConcertSeeker Agent code:
 Through a GUI, concert seeker inserts these arguments: 
-(1)Email, 
-(2)Location 
-(3)Ticket price
-(4)Genre
+(1) Email, 
+(2) Location 
+(3) Ticket price
+(4) Genre
 Moreover, a "Seek Concert" button is defined. By clicking on this button, the ConcertSeeker Agent sends the request to the recommender agent.
 */
 
@@ -16,6 +16,9 @@ Moreover, a "Seek Concert" button is defined. By clicking on this button, the Co
  * 3. If the Recommender replied positively to this seeker, meaning there is an upcoming concert that matched the seeker's preferences
  * The seeker will be able to use Find friends service (the button will be enabled).
  * */
+
+// Note that this file contains both the agent code as well as the GUI code. 
+
 package agents;
 
 import jade.core.Agent;
@@ -30,6 +33,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+// Agent class
 public class ConcertSeekerAgent extends Agent {
     private ConcertSeekerGui gui;
 
@@ -130,19 +134,21 @@ public class ConcertSeekerAgent extends Agent {
         }
     }
 
+    // GUI class
     private class ConcertSeekerGui extends JFrame {
         private final ConcertSeekerAgent myAgent;
 
         private final JTextField emailField, locationField, priceField, genreField;
         private final JButton findFriendsButton;
         private final JTextArea friendsListArea;
-
+        
         ConcertSeekerGui(ConcertSeekerAgent a) {
+            // The constructor takes the seeker agent class instance as input. 
             myAgent = a;
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setLayout(new BorderLayout());
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit the program when the window is closed
+            setLayout(new BorderLayout());                   // Window layout type
 
-            JPanel panel = new JPanel(new GridLayout(6, 2));
+            JPanel panel = new JPanel(new GridLayout(6, 2)); // The panel containing all the buttons and text fields
             panel.add(new JLabel("Email:"));
             emailField = new JTextField(15);
             panel.add(emailField);
@@ -160,8 +166,10 @@ public class ConcertSeekerAgent extends Agent {
             panel.add(genreField);
 
             JButton seekButton = new JButton("Seek Concert");
+            // Event handler for handling button click and other forms of trigger (like the space key)
             seekButton.addActionListener(e -> {
                 try {
+                    // Trim all the inputs to get rid of extra whitespaces
                     String email = emailField.getText().trim();
                     String location = locationField.getText().trim();
                     String priceText = priceField.getText().trim();
@@ -177,9 +185,10 @@ public class ConcertSeekerAgent extends Agent {
                     int price = Integer.parseInt(priceText); // This line throws NumberFormatException if price is not a valid number
                     myAgent.seekConcert(email, location, price, genre);
                 } catch (NumberFormatException nfe) {
-                    JOptionPane.showMessageDialog(ConcertSeekerGui.this, "Invalid price format.");
+                    JOptionPane.showMessageDialog(ConcertSeekerGui.this, "Invalid price format.");  // Show an error dialog
                 }
             });
+            // Add the seek button to the same panel as the rest of the elements
             panel.add(seekButton);
 
 
@@ -193,25 +202,32 @@ public class ConcertSeekerAgent extends Agent {
                 String price = priceField.getText().trim();
                 
                 // Construct the preferences string with the email included
+                // We use a #-separated format for passing the messages
                 String preferences = genre + "#" + location + "#" + price + "#" + email;
+                // Send the actual inter-agent message
                 myAgent.sendInvitationAgentRequest(preferences);
                 findFriendsButton.setEnabled(false); // Optionally disable after sending request
             });
             findFriendsButton.setEnabled(false);
+            // Add the button to the panel
             panel.add(findFriendsButton);
 
+            // This text area is meant to display the friends found through the query, based on the response from the invitation agent
             friendsListArea = new JTextArea(5, 15);
             friendsListArea.setEditable(false);
             JScrollPane scrollPane = new JScrollPane(friendsListArea);
+            // First add the label to the panel
             panel.add(new JLabel("Potential friends, you can copy their emails and share with them the upcoming concert"));
             panel.add(scrollPane);
 
+            // Prepare the panel (containing the GUI) for display
             add(panel, BorderLayout.CENTER);
             pack();
             setLocationRelativeTo(null);
         }
 
         public void showResponse(String message) {
+            // Show the concert info if found
             JOptionPane.showMessageDialog(this, message);
             if (message.startsWith("Concert Found")) {
                 enableFindFriendsButton(); // Enable the Find Friends button when a concert is found
@@ -219,8 +235,10 @@ public class ConcertSeekerAgent extends Agent {
         }
 
         void enableFindFriendsButton() {
+            // Triggered when there is a concert match
             SwingUtilities.invokeLater(() -> findFriendsButton.setEnabled(true));
         }
+       
         public void showFriendsList(String friends) {
             SwingUtilities.invokeLater(() -> {
                 friendsListArea.setText(""); // Clear the area before adding new content
