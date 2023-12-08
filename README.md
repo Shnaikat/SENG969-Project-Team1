@@ -1,9 +1,9 @@
 # SENG969-Project-Team1
 
-**This repository contains the source code for Assignment 3 in the SENG696 course. It includes SQL files for the database tables and an updated version of assignment 2 with inter-agent messages in XML. This document provides a detailed description of our implementation for the Multi-Agent MCRS, along with the sequence for starting the agents.**
-
+**This repository contains the source code for Assignment 3 in the SENG696 course. It includes SQL files for the database tables and an updated version of assignment 2 with inter-agent messages in XML.** <br> 
+**This document provides a detailed steps on how to run our code along with the sequence for starting the agents. Also, a description of our implementation for the Multi-Agent MCRS, .**
+## How to run our code: 
 ## Agent Initialization Sequence
-
 1. **Data Manager Agent:**
    - **Agent Name:** `dataManager`
    - **Role:** Listens for the VenueAgent to provide upcoming concert details such as location, ticketPrice, and genre.
@@ -24,7 +24,9 @@
    - **Role:** Creates user profiles and verifies user information.
    - **Expected Arguments:** None
    - **Screenshot of the Admin GUI:**
-     ![Admin GUI](https://raw.githubusercontent.com/Shnaikat/SENG969-Project-Team1/main/screenShots/AdminGUI.png)
+    
+     ![Admin GUI](./screenShots/AdminGUI.png)
+
 
 4. **ConcertSeeker Agent:**
    - **Agent Names:** Any name is acceptable.
