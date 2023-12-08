@@ -2,7 +2,11 @@
 
 **This repository contains the source code for Assignment 3 in the SENG696 course. It includes SQL files for the database tables and an updated version of assignment 2 with inter-agent messages in XML.** <br> 
 **This document provides a detailed steps on how to run our code along with the sequence for starting the agents. Also, a description of our implementation for the Multi-Agent MCRS, .**
-## How to run our code: 
+## How to run our code: <br>
+- Create a new Java project.
+- Add the jar files as external libraries. (Jade and mysql-connector-j-8.0.31.jar).
+- Import the src/agents.
+- Run configuration: 
 ## Agent Initialization Sequence
 1. **Data Manager Agent:**
    - **Agent Name:** `dataManager`
