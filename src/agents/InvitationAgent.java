@@ -60,12 +60,15 @@ public class InvitationAgent extends Agent {
                     String genre = preferences[0];
                     String location = preferences[1];
                     try {
+                        // Cast the price
                         int ticketPrice = Integer.parseInt(preferences[2]);
                         String seekerEmail = preferences[3];
+                        // Call searchForFriends to create and execute the database query
                         Set<String[]> friends = searchForFriends(seekerEmail, genre, ticketPrice, location);
                         for (String[] friend : friends) {
                             updateFriendsTable(friend[0], friend[1]); // where friend[0] is name, friend[1] is the email
                         }
+                        // Prepare the reply to the original message (from the friend seeker agent)
                         ACLMessage reply = msg.createReply();
                         StringBuilder sb = new StringBuilder();
                         for (String[] friend : friends) {
@@ -73,12 +76,15 @@ public class InvitationAgent extends Agent {
                             sb.append("Name: ").append(friend[0]).append(", Email: ").append(friend[1]).append("\n");
                         }
                         if (sb.length() > 0) {
+                            // At least one friend found, return the results and INFORM
                             reply.setPerformative(ACLMessage.INFORM);
                             reply.setContent(sb.toString());
                         } else {
+                            // No friend found, report the FAILURE
                             reply.setPerformative(ACLMessage.FAILURE);
                             reply.setContent("No friends found with similar preferences.");
                         }
+                        // Send the reply message
                         send(reply);
                     } catch (NumberFormatException e) {
                         // Generate an error message if the price is not a number
@@ -89,6 +95,7 @@ public class InvitationAgent extends Agent {
                     System.err.println(getLocalName() + ": number of preferences received is in corrected. supposed to have 4, got " + preferences.length);
                 }
             } else {
+                // Wait for the next event to happen before proceeding with the loop
                 block();
             }
         }
