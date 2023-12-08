@@ -1,6 +1,8 @@
-/*Admin GUI  let the user insert personal info to create profile
+/*Admin GUI  Let the user insert personal info to create profile
 In other words, to make a profile, a new user needs to fill out the form that includes three fields: (1)Name, (2)Password, (3)Email.
-Then the registration will be done through the Admin GUI.*/
+Then the registration will be done through the Admin GUI.
+Note that this file contains the GUI code and the main functionality is provided by the Admin Agent described in AdminAgent.java. 
+*/
 
 
 package agents;
@@ -10,7 +12,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class AdminGui extends JFrame {
-    private AdminAgent myAgent;//instance from the Admin agent
+    private AdminAgent myAgent; //instance from the Admin agent
 
     private JTextField nameTextField, emailField, passwordField;
 
@@ -22,10 +24,10 @@ public class AdminGui extends JFrame {
         JPanel p = new JPanel();// instance of JPanel to create neat GUI
         //  p.setLayout(new GridLayout(8, 4));
         p.setLayout(new GridLayout(4, 2));
-//creating the fields so the user can insert his personal info to create profile ->register
+        //creating the fields so the user can insert his personal info to create profile ->register
         p.add(new JLabel("Name:"));
         
-       // nameField = new JTextField(20);
+        // nameField = new JTextField(20);
         nameTextField = new JTextField(15);
         p.add(nameTextField);
 
@@ -72,7 +74,7 @@ public class AdminGui extends JFrame {
     }
 
     public void showGui() {
-       pack();// show the window properly when running
+        pack(); // show the window properly when running
         this.setTitle("MCRS registration window");//giving title to the window
         this.setResizable(true);
    //   this.getContentPane().setBackground(Color.BLUE);
