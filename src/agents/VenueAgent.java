@@ -18,7 +18,7 @@ public class VenueAgent extends Agent {
     private String genre;
 
     protected void setup() {
-        System.out.println(getLocalName() + ": ready .. I am an instance of the Venue agent");
+        System.out.println(getLocalName() + ": ready .. I am an instance of the Venue agent"); //when right click on the Main-Container and start new Agent (Venue Agent), this message will be showed in the Concole
 
        /* Object[] args = getArguments();
         if (args != null && args.length == 3) {
