@@ -95,24 +95,32 @@ public class InvitationAgent extends Agent {
     }
 
     private Set<String[]> searchForFriends(String seekerEmail, String genre, int ticketPrice, String location) {
+        // This function does the heavy lifting part of the search process, by generating a SQL query, executing it and returning the results
+        // The return value is a hash set consisting of [name, email] records
         Set<String[]> friends = new HashSet<>();
         try {
+            // Create the base query
             String sql = "SELECT DISTINCT u.name, u.email FROM preferences p JOIN users u ON p.userID = u.ID WHERE p.genre = ? AND p.location = ? AND p.Ticket <= ? AND u.email <> ?";
+            // Prepare the base query and the connection
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                // Insert the respective fields in the query (genre, location, ticket price, email)
                 pstmt.setString(1, genre);
                 pstmt.setString(2, location);
                 pstmt.setInt(3, ticketPrice);
-                pstmt.setString(4, seekerEmail); // concert seeker email is execluded
+                pstmt.setString(4, seekerEmail); // concert seeker email is excluded
 
                 ResultSet rs = pstmt.executeQuery();
+                // For each record corresponding to a friend: 
                 while (rs.next()) {
+                    // Extract the name and the email address
                     String name = rs.getString("name");
                     String email = rs.getString("email");
-                    friends.add(new String[]{name, email}); // Add to set to ensure that  the records are unique
+                    friends.add(new String[]{name, email}); // Add to set to ensure that the records are unique
                 }
             }
         } catch (Exception e) {
-            System.err.println(getLocalName() + ": smthing wrong while searching for friends. " + e.getMessage());
+            // Error reporting
+            System.err.println(getLocalName() + ": something wrong while searching for friends. " + e.getMessage());
             e.printStackTrace();
         }
         return friends;
