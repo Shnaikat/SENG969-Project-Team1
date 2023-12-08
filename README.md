@@ -8,7 +8,7 @@
 - Import the src/agents.
 - Run configurations: <br>
   - Create new Java App and give it a name.<br>
-  - In the Main tab the project should be the same project you have created and the class should be jade.Boot.<br>
+  - In the Main tab, ensure that the project selected is the one you have just created. The main class should be set to 'jade.Boot'<br>
   - In the Arguments tab, insert -gui.<br>
   - Apply and Run.<br>
   - Each time you want to re-run, just choose the Java App you have created. <br>
