@@ -37,7 +37,7 @@ public class DataManagerAgent extends Agent {
             conn.setAutoCommit(true); // enable auto-commit to be sure that the transaction reflected on the DB
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("I can't connect to DB " + e.getMessage());
+            System.out.println("I can't connect to DB " + e.getMessage()); //Gives this error message if connection to the DataBase fails
             doDelete();
         }
 
