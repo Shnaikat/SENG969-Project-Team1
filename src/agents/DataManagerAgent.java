@@ -68,7 +68,7 @@ public class DataManagerAgent extends Agent {
                 block();
             }
         }
-
+// The following code (updateConcertDetails), will insert the received concert information (location of the concert, ticket price and genre of the concert) into the concert tables of the DataBase
         private void updateConcertDetails(String location, int price, String genre) {
             String query = "INSERT INTO concerts(location, Ticket, genre) VALUES(?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
