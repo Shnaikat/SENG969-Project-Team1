@@ -126,20 +126,25 @@ public class InvitationAgent extends Agent {
         return friends;
     }
     private void updateFriendsTable(String friendName, String friendEmail) {
+        // Add user info to the friends table, no return value
         try {
             // Transaction begins here
             connection.setAutoCommit(false);
             
-            // Here we are Checking if this friend is already recorded/inserted
+            // Here we are checking if this friend is already recorded / inserted
             String checkSql = "SELECT COUNT(*) FROM friends WHERE friendName = ? AND friendEmail = ?";
             try (PreparedStatement checkStmt = connection.prepareStatement(checkSql)) {
+                // Insert user info into the SQL query
                 checkStmt.setString(1, friendName);
                 checkStmt.setString(2, friendEmail);
                 ResultSet checkRs = checkStmt.executeQuery();
+                // Process the response to the query
                 if (checkRs.next() && checkRs.getInt(1) == 0) {
                     // Not inserted, so insert
+                    // Create another query for inserting the new record
                     String insertSql = "INSERT INTO friends (friendName, friendEmail) VALUES (?, ?)";
                     try (PreparedStatement insertStmt = connection.prepareStatement(insertSql)) {
+                        // Insert the name and the email into the new query
                         insertStmt.setString(1, friendName);
                         insertStmt.setString(2, friendEmail);
                         insertStmt.executeUpdate();
@@ -150,18 +155,21 @@ public class InvitationAgent extends Agent {
             // Commit the transaction
             connection.commit();
         } catch (Exception e) {
+            // Handler for all errors
             System.err.println(getLocalName() + ": Could not update friends table. " + e.getMessage());
             try {
                 // Attempt to rollback the transaction if errors are there
                 connection.rollback();
             } catch (Exception rollbackEx) {
-                System.err.println(getLocalName() + ": rolling back the transaction failing. " + rollbackEx.getMessage());
+                // This should not normally happen.
+                System.err.println(getLocalName() + ": rolling back the transaction failed. " + rollbackEx.getMessage());
             }
         } finally {
             try {
-                // Restore the auto-commit .. this bcoz I was having errors here
+                // Restore the auto-commit .. this is because I was having errors here
                 connection.setAutoCommit(true);
             } catch (Exception autoCommitEx) {
+                // Again, this should not normally happen
                 System.err.println(getLocalName() + ": Error restoring auto-commit. " + autoCommitEx.getMessage());
             }
         }
@@ -170,13 +178,16 @@ public class InvitationAgent extends Agent {
 
 
     protected void takeDown() {
+        // Gracefully stop the agent by closing the connection
         try {
+            // Only try to close the connection if it has not been already closed
             if (connection != null && !connection.isClosed()) {
                 connection.close();
                 System.out.println(getLocalName() + ": DB connection closed.");
             }
         } catch (Exception e) {
-            System.err.println(getLocalName() + ": Smthing went wrong when closing the DB connection. " + e.getMessage());
+            // The connection was open and we failed to close it
+            System.err.println(getLocalName() + ": Something went wrong when closing the DB connection. " + e.getMessage());
             e.printStackTrace();
         }
         System.out.println(getLocalName() + " I am terminating.");
