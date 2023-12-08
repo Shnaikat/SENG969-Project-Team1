@@ -44,7 +44,10 @@ public class DataManagerAgent extends Agent {
         addBehaviour(new InsertConcertDetailsBehaviour());
     }
 //dataManager listen to Venue (Provider) and receive a message. This message is the concert info.
-// Then split the message into three parts.   
+// Then split the message into three parts:  
+// First part: location
+// Second part: price
+// Third part: genre
     private class InsertConcertDetailsBehaviour extends CyclicBehaviour {
         public void action() {
             MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
@@ -52,14 +55,14 @@ public class DataManagerAgent extends Agent {
             if (msg != null) {
                 System.out.println(getLocalName() + ": Received a message.");
                 String content = msg.getContent();
-                String[] details = content.split("#");
+                String[] details = content.split("#"); 
                 if(details.length == 3) {
                     String location = details[0];
                     int price = Integer.parseInt(details[1]);
                     String genre = details[2];
                  // Print incoming arguments (concert details)
                     System.out.println("I am the data manager and I received the following concert details: Location -> " + location + ", Price -> " + price + ", Genre -> " + genre); 
-                    updateConcertDetails(location, price, genre);//Sending those info to be inserted in concerts table
+                    updateConcertDetails(location, price, genre); //Sending those info to be inserted in concerts table
                 }
             } else {
                 block();
