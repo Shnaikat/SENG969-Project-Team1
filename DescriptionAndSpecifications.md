@@ -1,7 +1,7 @@
 # SENG969-Project-Team1
 
-- **This repository contains the source code for Assignment 3 of the SENG696 course. It includes SQL files for setting up database tables, the necessary jar files, and an updated version of Assignment 2, which now features inter-agent messaging in XML format.** <br> 
-- **This document offers detailed steps on how to run our code, along with the sequence for initializing the agents. Additionally, it provides a description and specifications of our implementation for the Multi-Agent Music Concert Recommender System (MCRS).**
+- **This repository contains the source code for Assignment 3 of the SENG696 course. It includes SQL files for setting up database tables, and the necessary jar files.** <br> 
+- **This MD file offers detailed steps on how to run our code, along with the sequence for initializing the agents. Additionally, it provides a description and specifications of our implementation for the Multi-Agent Music Concert Recommender System (MCRS).**
 - **At the end of this file, we have provided a link to our presentation due its large size** <br> 
 ## How to run our code: <br>
 - Create a new Java project.
@@ -52,8 +52,6 @@
    - **Screenshot Placeholder:**
     ![ConcertSeeker GUI 1](./screenShots/ConcertSeeker.png)
   
-
-
 
 6. **InvitationAgent:**
    - **Agent Name:** `InvitationAgent`
