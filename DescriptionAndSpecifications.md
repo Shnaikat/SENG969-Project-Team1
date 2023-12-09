@@ -61,11 +61,12 @@
     ![InvitationAgent GUI](./screenShots/InvitationAgent.jpg)
     ![ConcertSeeker GUI 2](./screenShots/Seeker-positiveResponse.png)
 
-## Additional Notes
-- The arguments provided are examples. Replace them with actual values as needed.
 To access our presentation you can follow this Line:
 [The presentation: ](https://gamma.app/docs/Multi-Agent-Music-Concert-Recommender-System-MCRS-qzmlqfdzuavhjel)
 ---
+
+## Additional Notes
+- The provided arguments are examples. Replace them with actual values as needed.
 
 
 
