@@ -146,8 +146,8 @@ public class ConcertSeekerAgent extends Agent {
                     System.out.println("Received friends list from InvitationAgent."); // print thru the console for debugging
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
                    // A FAILURE message indicates that there is no friend suggestion. 
-                   // gui.showFriendsList("No friends found.");
-                   //System.out.println("InvitationAgent could not find matching friends.");
+                   gui.showFriendsList("No friends found.");
+                   System.out.println("InvitationAgent could not find matching friends.");
                 }
             } else {
                 // If there's no message to process, wait for the next event
