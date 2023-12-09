@@ -95,7 +95,7 @@ public class DataManagerAgent extends Agent {
 
 
 
-// The follownig code is the first version of DataManager agent.
+// The follownig code is the first version of DataManager agent. We are providing it as comments to let you know about our implementation approach.
 /*
 public class Datamanager extends Agent {
 	@Override
