@@ -91,3 +91,60 @@ public class DataManagerAgent extends Agent {
         }
     }
 }
+
+
+
+
+// The follownig code is the first version of DataManager agent.
+/*
+public class Datamanager extends Agent {
+	@Override
+	public void setup() {
+		addBehaviour(new CyclicBehaviour() {
+			@Override
+			public void action() {
+				ACLMessage msg = receive();
+				if (msg != null) {
+					String msgstr = "Received a message from " + msg.getSender().getLocalName();
+					msgstr += msg.getContent();
+					System.out.println(msgstr);
+					String[] toks = msg.getContent().split(",");
+					String location = "", ticket_price = "", genre = "";
+					if (toks.length > 0)
+						location = toks[0];
+					if (toks.length > 1)
+						ticket_price = toks[1];
+					if (toks.length > 2)
+						genre = toks[2];
+					System.out.println("Request location=" + location + ";ticket_price=" + 
+						ticket_price + ";genre=" + genre);
+										    
+			        try {
+
+			            Connection con=DriverManager.getConnection("jdbc:sqlite:C://py_ex/userDB.db");
+
+                        Statement stmt = con.createStatement();
+                     	String sql = "INSERT INTO concerts (location, ticket_price, genre) VALUES ('" +  location +"','"+ ticket_price +"','"+genre +"')";
+
+                       stmt.executeUpdate(sql);
+                       
+		            	ACLMessage reply = msg.createReply();
+		            	reply.setPerformative(ACLMessage.INFORM);
+		            	reply.setContent("1");
+		            	send(reply);
+			           }
+			       catch (SQLException e) {
+		            	ACLMessage reply = msg.createReply();
+		            	reply.setPerformative(ACLMessage.INFORM);
+		            	reply.setContent("0");
+		            	send(reply); 
+                        }						
+								
+				}
+				else block();
+				
+			}
+		});
+
+	}
+*/
