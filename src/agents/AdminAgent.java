@@ -89,7 +89,7 @@ public class AdminAgent extends Agent {
                 block();
             }
         }
-
+//The handleVerifyUser check if user exits or doesn't exit. And it gives the message accordingly
         private void handleVerifyUser(String userEmail, ACLMessage msg) {
             try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS)) {
                 String query = "SELECT ID FROM users WHERE email = ?";
