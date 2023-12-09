@@ -34,7 +34,9 @@ public class AdminAgent extends Agent {
         SwingUtilities.invokeLater(gui::showGui);
         addBehaviour(new CheckUserBehaviour());
     }
- // This method is checking what the user have inserted thru the GUI  fields --> data validation/Error handling
+ // This method is checking what the user have inserted thru the GUI  fields --> data validation
+ // Error handling : Checking if a name contains numbers
+ // Error handling : Checking Email format
     public String validateProfileDetails(String name, String email) {
         if (name.matches(".*\\d.*")) {
             return "Name can't contain numbers.";
