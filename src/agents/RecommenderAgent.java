@@ -124,16 +124,18 @@ public class RecommenderAgent extends Agent {
     }
 
     private void updateUserPreferences(String location, int ticketPrice, String genre, int userID) {
-        // insert the user's preferences to DB
+        // Insert the user's preferences to DB
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            // Create the SQL query template
             String sql = "INSERT INTO preferences (location, Ticket, genre, userID) VALUES (?, ?, ?, ?)";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                // Insert user preferences into the query
                 stmt.setString(1, location);
                 stmt.setInt(2, ticketPrice);
                 stmt.setString(3, genre);
                 stmt.setInt(4, userID);
                 int rowsAffected = stmt.executeUpdate();
-                System.out.println("Preferences updated .. the affected rows: " + rowsAffected);
+                System.out.println("Preferences updated .. the affected rows: " + rowsAffected);  // Debug aid
             }
         } catch (Exception e) {
             System.out.println("could not update user preferences: " + e.getMessage());
@@ -142,9 +144,13 @@ public class RecommenderAgent extends Agent {
     }
 
     private void recommendConcert(String location, int ticketPrice, String genre, ACLMessage seekerMsg) {
+        // This function is only called in the behaviour, as it must create a reply to a prior message
+        // The type of the reply message can be PROPOSE or REFUSE to reflect a match or a lack there of
         ACLMessage proposal = seekerMsg.createReply();
         boolean concertFound = false;
         for (Concert concert : concertCatalog) {
+            // Find and return the first match
+            // Location and genre are case-insensitive, ticket price must be smaller than or equal to the preference to yield a match
             if (concert.location.equalsIgnoreCase(location) && 
                 concert.ticketPrice <= ticketPrice && 
                 concert.genre.equalsIgnoreCase(genre)) {
@@ -164,7 +170,7 @@ public class RecommenderAgent extends Agent {
         send(proposal);
     }
 
-// The Concert inner class is found to have a concert object that holds the concert attributes (ID, location, ticketProice, and genre
+// The Concert inner class is found to have a concert object that holds the concert attributes (ID, location, ticketProice, and genre)
     public static class Concert {
         int concertID;
         String location;
