@@ -186,7 +186,9 @@ public class ConcertSeekerAgent extends Agent {
             panel.add(new JLabel("Preferred Genre:"));
             genreField = new JTextField(15);
             panel.add(genreField);
-
+            
+            setTitle("Concert Seeker - " + myAgent.getAID().getName()); // Include agent name to distinguish between different seeker scenarios while presenting
+            
             JButton seekButton = new JButton("Seek Concert");
             // Event handler for handling button click and other forms of trigger (like the space key)
             seekButton.addActionListener(e -> {
