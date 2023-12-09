@@ -49,7 +49,8 @@
    - **Role:** Sends concert seeking requests and enables the 'Find friends' service.
    - **Expected Arguments:** email, location preferences, ticketPrice, genre
    - **Screenshot Placeholder:**
-   - ![ConcertSeeker GUI](./screenShots/Seeker-positiveResponse.png)
+   - ![ConcertSeeker GUI 1](./screenShots/ConcertSeeker.png)
+   - ![ConcertSeeker GUI 2](./screenShots/Seeker-positiveResponse.png)
 
 
 
