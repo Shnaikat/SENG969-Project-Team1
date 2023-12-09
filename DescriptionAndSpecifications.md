@@ -64,5 +64,7 @@
 - The arguments provided are examples. Replace them with actual values as needed.
 
 ---
+The presentation: 
+https://gamma.app/docs/Multi-Agent-Music-Concert-Recommender-System-MCRS-qzmlqfdzuavhjel?mode=present#card-f00moob9ktjll56
 
 For any issues during the initialization, please refer to our troubleshooting guide or contact the development team.
