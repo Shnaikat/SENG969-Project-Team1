@@ -55,7 +55,8 @@ public class VenueAgent extends Agent {
     }
 }
 
-/* This is an earlier version of the code in which we experimented with a different agent architecture, with GUI and a different inter-agent communication structure. 
+/* This is an earlier version of the VenueAgent in which we experimented with a different agent architecture, with GUI and a different inter-agent communication structure. We are providing it
+here to let you know more about our implementation approach.
     public class Venue extends Agent {
 	// Communication target
 	String dataManager = "DataManager";
