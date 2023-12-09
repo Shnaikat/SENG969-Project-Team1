@@ -63,13 +63,16 @@ public class AdminAgent extends Agent {
                     JOptionPane.showMessageDialog(gui, "Profile created successfully and the inserted user has the ID: " + newUserId);
                 }
             }
+         //Error handling: when creating a profile failed
         } catch (Exception e) {
             JOptionPane.showMessageDialog(gui, "insert user failed ... " + e.getMessage(), " creating profile was not successful", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
 
-    // this class is implementing the user checking requests --> if the users email is already in the users table
+    
+ // this class is implementing the user checking requests --> if the users email is already in the users table
+ // For example, in Recommender Agent, we need to have a registered user. This process will be done by the CheckUserBehaviour class  
     private class CheckUserBehaviour extends CyclicBehaviour {
         public void action() {
             MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
