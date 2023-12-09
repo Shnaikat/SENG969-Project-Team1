@@ -60,6 +60,7 @@
    - **Expected Arguments:** None
    - **Screenshot Placeholder:**
    - ![InvitationAgent GUI](./screenShots/InvitationAgent.jpg)
+   - ![No Friends found scenario](./screenShots/Invitation-NoFriendsScenario.jpg)
 
 ## Additional Notes
 - The arguments provided are examples. Replace them with actual values as needed.
